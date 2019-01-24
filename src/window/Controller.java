@@ -164,5 +164,6 @@ public class Controller implements Initializable {
     public void addTask() {
         AdditionalWindow.showAddTaskWindow();
         reloadGrid();
+        //test
     }
 }
