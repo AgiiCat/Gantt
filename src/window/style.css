@@ -1,0 +1,24 @@
+#dataGrid {
+    -fx-background-color: silver;
+
+    /*-fx-alignment: baseline-center;*/
+}
+#dataGrid > * {
+    -fx-border-color: black;
+}
+#startPane {
+
+}
+.dateElement {
+    -fx-font-size: 16px;
+    -fx-background-color: #383838;
+    -fx-text-fill: white;
+}
+.employeeElement{
+     -fx-font-size: 16px;
+     -fx-background-color: #161c38;
+     -fx-text-fill: white;
+ }
+#globalPane{
+    -fx-text-alignment: left;
+}
