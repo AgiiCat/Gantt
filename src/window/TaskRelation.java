@@ -29,7 +29,12 @@ public class TaskRelation implements Serializable {
         Task taskFrom=Task.findInLinkedListByID(tasks,this.taskIDFrom);
         return this.relation+": "+taskFrom.getTaskName()+" -> "+taskTo.getTaskName();
     }
-
+    public void removeRelation(){
+        Task taskTo=Task.findInLinkedListByID(tasks,this.taskIDTo);
+        Task taskFrom=Task.findInLinkedListByID(tasks,this.taskIDFrom);
+        taskTo.removeRelationTo(this);
+        taskFrom.removeRelationFrom(this);
+    }
     public static TaskRelation unPack(Optional<TaskRelation> o){
         if(o.isPresent())
             return o.get();

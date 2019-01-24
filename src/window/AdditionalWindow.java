@@ -122,8 +122,6 @@ public class AdditionalWindow {
         return textRelation;
     }
     private static boolean showDeleteTaskRelationWindow(TaskRelation r){
-        Task taskTo=Task.findInLinkedListByID(tasks,r.getTaskIDTo());
-        Task taskFrom=Task.findInLinkedListByID(tasks,r.getTaskIDFrom());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation deleting Task Relation");
         alert.setHeaderText(null);
@@ -131,8 +129,7 @@ public class AdditionalWindow {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            taskTo.removeRelationTo(r);
-            taskFrom.removeRelationFrom(r);
+            r.removeRelation();
             return true;
         }
         return false;
@@ -212,6 +209,11 @@ public class AdditionalWindow {
                     return choosedTask;
                 }
             } else if (button.getText().equals("CONFIRM END")){
+                for(TaskRelation r : choosedTask.getRelationsTo())
+                    r.removeRelation();
+                for(TaskRelation r : choosedTask.getRelationsFrom())
+                    r.removeRelation();
+
                 Task.removeFromLinkedList(tasks, choosedTask);
             }
             return null;
